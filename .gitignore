@@ -1,0 +1,68 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.sql
+
+# Dependencies
+vendor/
+node_modules/
+bower_components/
+listing/vendor/
+listing/node_modules/
+listing/bower_components/
+
+# Runtime and generated files
+storage/framework/
+storage/logs/
+storage/cache/
+storage/app/backup/
+storage/app/ui-audit/
+listing/storage/framework/
+listing/storage/logs/
+listing/storage/cache/
+listing/storage/app/backup/
+listing/storage/app/ui-audit/
+listing/storage/*.key
+listing/storage/.license
+listing/storage/fonts/
+listing/storage/cache_keys.json
+listing/storage/installing
+listing/storage/installed
+listing/storage/framework/maintenance.php
+listing/bootstrap/cache/*.php
+
+# Public generated/build artifacts
+listing/public/hot
+listing/public/storage
+listing/public/vendor/core
+listing/public/themes
+listing/public/docs
+listing/public/mix-manifest.json
+
+# Duplicate/source archive folders in the XAMPP workspace
+source-code/
+documentation/
+
+# Logs and OS/editor files
+*.log
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.phpunit.result.cache
+.phpactor.json
+.php_cs.cache
+.sass-cache/
+
+# Agent/tooling local state
+.gstack/
+listing/.gstack/
+listing/.claude/
+listing/.mcp.json
+listing/.taskmaster/
+listing/.opencode/

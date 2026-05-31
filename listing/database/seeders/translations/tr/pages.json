@@ -1,0 +1,50 @@
+{
+    "Homepage 1": {
+        "name": "Ana Sayfa 1"
+    },
+    "Homepage 2": {
+        "name": "Ana Sayfa 2"
+    },
+    "Homepage 3": {
+        "name": "Ana Sayfa 3"
+    },
+    "Homepage 4": {
+        "name": "Ana Sayfa 4"
+    },
+    "Homepage 5": {
+        "name": "Ana Sayfa 5"
+    },
+    "Blog": {
+        "name": "Blog"
+    },
+    "Contact Us": {
+        "name": "İletişim"
+    },
+    "Our Services": {
+        "name": "Hizmetlerimiz"
+    },
+    "FAQs": {
+        "name": "SSS"
+    },
+    "About Us": {
+        "name": "Hakkımızda"
+    },
+    "Pricing Plans": {
+        "name": "Fiyat Planları"
+    },
+    "Privacy Policy": {
+        "name": "Gizlilik Politikası"
+    },
+    "Coming Soon": {
+        "name": "Yakında"
+    },
+    "Properties": {
+        "name": "Emlak"
+    },
+    "Projects": {
+        "name": "Projeler"
+    },
+    "Cookie Policy": {
+        "name": "Çerez Politikası"
+    }
+}

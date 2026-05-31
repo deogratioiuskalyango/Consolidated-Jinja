@@ -1,0 +1,50 @@
+{
+    "Homepage 1": {
+        "name": "Trang chủ 1"
+    },
+    "Homepage 2": {
+        "name": "Trang chủ 2"
+    },
+    "Homepage 3": {
+        "name": "Trang chủ 3"
+    },
+    "Homepage 4": {
+        "name": "Trang chủ 4"
+    },
+    "Homepage 5": {
+        "name": "Trang chủ 5"
+    },
+    "Blog": {
+        "name": "Blog"
+    },
+    "Contact Us": {
+        "name": "Liên hệ"
+    },
+    "Our Services": {
+        "name": "Dịch vụ của chúng tôi"
+    },
+    "FAQs": {
+        "name": "Câu hỏi thường gặp"
+    },
+    "About Us": {
+        "name": "Về chúng tôi"
+    },
+    "Pricing Plans": {
+        "name": "Bảng giá"
+    },
+    "Privacy Policy": {
+        "name": "Chính sách bảo mật"
+    },
+    "Coming Soon": {
+        "name": "Sắp ra mắt"
+    },
+    "Properties": {
+        "name": "Bất động sản"
+    },
+    "Projects": {
+        "name": "Dự án"
+    },
+    "Cookie Policy": {
+        "name": "Chính sách cookie"
+    }
+}

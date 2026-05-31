@@ -1,0 +1,50 @@
+{
+    "Homepage 1": {
+        "name": "الصفحة الرئيسية 1"
+    },
+    "Homepage 2": {
+        "name": "الصفحة الرئيسية 2"
+    },
+    "Homepage 3": {
+        "name": "الصفحة الرئيسية 3"
+    },
+    "Homepage 4": {
+        "name": "الصفحة الرئيسية 4"
+    },
+    "Homepage 5": {
+        "name": "الصفحة الرئيسية 5"
+    },
+    "Blog": {
+        "name": "المدونة"
+    },
+    "Contact Us": {
+        "name": "اتصل بنا"
+    },
+    "Our Services": {
+        "name": "خدماتنا"
+    },
+    "FAQs": {
+        "name": "الأسئلة الشائعة"
+    },
+    "About Us": {
+        "name": "معلومات عنا"
+    },
+    "Pricing Plans": {
+        "name": "خطط الأسعار"
+    },
+    "Privacy Policy": {
+        "name": "سياسة الخصوصية"
+    },
+    "Coming Soon": {
+        "name": "قريبًا"
+    },
+    "Properties": {
+        "name": "العقارات"
+    },
+    "Projects": {
+        "name": "المشاريع"
+    },
+    "Cookie Policy": {
+        "name": "سياسة ملفات تعريف الارتباط"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "haft/youtube-feed",
+    "description": "YouTube channel feed API and settings for the HAFT theme (Smash Balloon–style feed UX)",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Botble\\YoutubeFeed\\": "src/"
+        }
+    },
+    "require": {}
+}

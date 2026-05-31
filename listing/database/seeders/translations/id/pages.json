@@ -1,0 +1,50 @@
+{
+    "Homepage 1": {
+        "name": "Beranda 1"
+    },
+    "Homepage 2": {
+        "name": "Beranda 2"
+    },
+    "Homepage 3": {
+        "name": "Beranda 3"
+    },
+    "Homepage 4": {
+        "name": "Beranda 4"
+    },
+    "Homepage 5": {
+        "name": "Beranda 5"
+    },
+    "Blog": {
+        "name": "Blog"
+    },
+    "Contact Us": {
+        "name": "Kontak"
+    },
+    "Our Services": {
+        "name": "Layanan kami"
+    },
+    "FAQs": {
+        "name": "FAQ"
+    },
+    "About Us": {
+        "name": "Tentang Kami"
+    },
+    "Pricing Plans": {
+        "name": "Paket harga"
+    },
+    "Privacy Policy": {
+        "name": "Kebijakan Privasi"
+    },
+    "Coming Soon": {
+        "name": "Segera hadir"
+    },
+    "Properties": {
+        "name": "Properti"
+    },
+    "Projects": {
+        "name": "Proyek"
+    },
+    "Cookie Policy": {
+        "name": "Kebijakan Cookie"
+    }
+}

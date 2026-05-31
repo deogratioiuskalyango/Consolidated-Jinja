@@ -1,0 +1,11 @@
+{
+    "id": "haft/youtube-feed",
+    "name": "YouTube Feed",
+    "namespace": "Botble\\YoutubeFeed\\",
+    "provider": "Botble\\YoutubeFeed\\Providers\\YoutubeFeedServiceProvider",
+    "author": "Haft Uganda",
+    "url": "https://haft.ug",
+    "version": "1.0.0",
+    "description": "Server-side YouTube Data API proxy (/api/videos), admin settings, and shortcode for the channel feed page.",
+    "minimum_core_version": "7.3.0"
+}

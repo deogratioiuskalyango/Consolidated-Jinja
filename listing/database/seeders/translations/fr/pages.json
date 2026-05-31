@@ -1,0 +1,50 @@
+{
+    "Homepage 1": {
+        "name": "Accueil 1"
+    },
+    "Homepage 2": {
+        "name": "Accueil 2"
+    },
+    "Homepage 3": {
+        "name": "Accueil 3"
+    },
+    "Homepage 4": {
+        "name": "Accueil 4"
+    },
+    "Homepage 5": {
+        "name": "Accueil 5"
+    },
+    "Blog": {
+        "name": "Blog"
+    },
+    "Contact Us": {
+        "name": "Contact"
+    },
+    "Our Services": {
+        "name": "Nos services"
+    },
+    "FAQs": {
+        "name": "FAQ"
+    },
+    "About Us": {
+        "name": "À propos"
+    },
+    "Pricing Plans": {
+        "name": "Tarifs"
+    },
+    "Privacy Policy": {
+        "name": "Politique de confidentialité"
+    },
+    "Coming Soon": {
+        "name": "Bientôt disponible"
+    },
+    "Properties": {
+        "name": "Biens"
+    },
+    "Projects": {
+        "name": "Projets"
+    },
+    "Cookie Policy": {
+        "name": "Politique de cookies"
+    }
+}
