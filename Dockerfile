@@ -23,7 +23,7 @@ RUN apt-get update \
         libzip-dev \
         unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j"$(nproc)" gd pdo_mysql pdo_pgsql zip \
+    && docker-php-ext-install -j"$(nproc)" calendar gd pdo_mysql pdo_pgsql zip \
     && a2enmod rewrite headers \
     && sed -ri "s#/var/www/html#${APACHE_DOCUMENT_ROOT}#g" /etc/apache2/sites-available/*.conf /etc/apache2/apache2.conf \
     && rm -rf /var/lib/apt/lists/*
