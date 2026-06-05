@@ -18,6 +18,7 @@ management
 **/storage/framework/views
 **/storage/app/backup
 **/storage/app/ui-audit
+listing/bootstrap/cache/*.php
 listing/public/hot
 listing/public/storage
 listing/public/vendor/core

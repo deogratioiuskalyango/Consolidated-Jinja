@@ -35,6 +35,7 @@ COPY --from=assets /app/listing/platform/themes/homzen/public ./platform/themes/
 COPY docker/render-entrypoint.sh /usr/local/bin/render-entrypoint.sh
 
 RUN mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+    && rm -f bootstrap/cache/*.php \
     && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod +x /usr/local/bin/render-entrypoint.sh
