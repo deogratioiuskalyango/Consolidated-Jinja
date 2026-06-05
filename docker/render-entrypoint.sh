@@ -54,6 +54,13 @@ for folder in avatars general locations pages partners posts properties users; d
     seed_media_folder "$folder"
 done
 
+mkdir -p storage/app/public/hero1920
+if [ -f database/seeders/files/pages/slider-6.png ]; then
+    cp -n database/seeders/files/pages/slider-6.png storage/app/public/hero1920/1.png || true
+elif [ -f database/seeders/files/general/placeholder.png ]; then
+    cp -n database/seeders/files/general/placeholder.png storage/app/public/hero1920/1.png || true
+fi
+
 seed_media_derivatives avatars 150x150 300x300 400x400
 seed_media_derivatives locations 400x260 400x400
 seed_media_derivatives posts 400x260 400x400
