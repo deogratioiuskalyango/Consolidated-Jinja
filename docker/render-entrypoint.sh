@@ -16,6 +16,50 @@ mkdir -p source-code/resources/lang source-code/public/file source-code/public/z
 chown -R www-data:www-data storage bootstrap/cache
 chown -R www-data:www-data source-code/storage source-code/bootstrap/cache source-code/resources/lang source-code/public/file source-code/public/zaifiles management
 
+seed_media_folder() {
+    local folder="$1"
+
+    if [ -d "database/seeders/files/${folder}" ]; then
+        mkdir -p "storage/app/public/${folder}"
+        cp -rn "database/seeders/files/${folder}/." "storage/app/public/${folder}/" || true
+    fi
+}
+
+seed_media_derivatives() {
+    local folder="$1"
+    shift
+
+    if [ ! -d "storage/app/public/${folder}" ]; then
+        return
+    fi
+
+    find "storage/app/public/${folder}" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | while read -r file; do
+        local name base ext size
+        name="$(basename "$file")"
+
+        if [[ "$name" =~ -[0-9]+x[0-9]+\.[^.]+$ ]]; then
+            continue
+        fi
+
+        base="${file%.*}"
+        ext="${file##*.}"
+
+        for size in "$@"; do
+            cp -n "$file" "${base}-${size}.${ext}" || true
+        done
+    done
+}
+
+for folder in avatars general locations pages partners posts properties users; do
+    seed_media_folder "$folder"
+done
+
+seed_media_derivatives avatars 150x150 300x300 400x400
+seed_media_derivatives locations 400x260 400x400
+seed_media_derivatives posts 400x260 400x400
+seed_media_derivatives properties 400x260 400x400 150x150
+seed_media_derivatives users 150x150 300x300 400x400
+
 if [ -f public/vendor/core/core/base/images/logo.png ]; then
     cp -n public/vendor/core/core/base/images/logo.png storage/app/public/general/logo.png || true
     cp -n public/vendor/core/core/base/images/logo.png storage/app/public/general/logo-light.png || true
@@ -23,10 +67,11 @@ if [ -f public/vendor/core/core/base/images/logo.png ]; then
 fi
 
 if [ -f public/vendor/core/core/base/images/favicon.png ]; then
+    cp -n public/vendor/core/core/base/images/favicon.png storage/app/public/general/favicon.png || true
     cp -n public/vendor/core/core/base/images/favicon.png storage/app/public/general/favicon-150x150.png || true
 fi
 
-chown -R www-data:www-data storage/app/public/general
+chown -R www-data:www-data storage/app/public
 
 if [ "${MANAGEMENT_MARK_INSTALLED:-true}" = "true" ] && [ ! -f source-code/storage/installed ]; then
     printf '{"d":"%s","i":"%s","u":"%s"}' \
