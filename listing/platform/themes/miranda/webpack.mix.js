@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 const purgeCssPackage = require('@fullhuman/postcss-purgecss');
 const purgeCss = purgeCssPackage.default || purgeCssPackage;
+const fs = require('fs');
 
 const path = require('path');
 let directory = path.basename(path.resolve(__dirname));
@@ -45,7 +46,13 @@ mix
     .js(source + '/assets/js/main.js', dist + '/js')
 
 if (mix.inProduction()) {
-    mix
-        .copy(dist + '/css/style.css', source + '/public/css')
-        .copy(dist + '/js/main.js', source + '/public/js')
+    mix.after(() => {
+        copyBuiltAsset(dist + '/css/style.css', source + '/public/css/style.css');
+        copyBuiltAsset(dist + '/js/main.js', source + '/public/js/main.js');
+    });
+}
+
+function copyBuiltAsset(from, to) {
+    fs.mkdirSync(path.dirname(to), { recursive: true });
+    fs.copyFileSync(from, to);
 }

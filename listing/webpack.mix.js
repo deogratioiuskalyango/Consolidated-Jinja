@@ -1,5 +1,24 @@
 const mix = require('laravel-mix')
 const glob = require('glob')
+const fs = require('fs')
+const path = require('path')
+
+const originalCopy = mix.copy.bind(mix)
+const deferredCopies = []
+
+mix.copy = function (from, to, ...args) {
+    if (typeof from === 'string' && from.replace(/\\/g, '/').startsWith('public/')) {
+        deferredCopies.push([from, to])
+
+        return this
+    }
+
+    return originalCopy(from, to, ...args)
+}
+
+mix.after(() => {
+    deferredCopies.forEach(([from, to]) => copyBuiltPath(from, to))
+})
 
 mix.options({
     processCssUrls: false,
@@ -63,3 +82,12 @@ if (! buildPaths.length) {
 }
 
 buildPaths.forEach(buildPath => glob.sync(`./platform/${buildPath}/webpack.mix.js`).forEach(item => require(__dirname + '/' + item)))
+
+function copyBuiltPath(from, to) {
+    const target = fs.existsSync(from) && fs.statSync(from).isFile() && !path.extname(to)
+        ? path.join(to, path.basename(from))
+        : to
+
+    fs.mkdirSync(path.dirname(target), { recursive: true })
+    fs.cpSync(from, target, { recursive: true })
+}

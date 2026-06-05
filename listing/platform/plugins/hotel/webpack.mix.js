@@ -1,4 +1,5 @@
 let mix = require('laravel-mix')
+const fs = require('fs')
 
 const path = require('path')
 let directory = path.basename(path.resolve(__dirname))
@@ -9,25 +10,18 @@ const dist = 'public/vendor/core/plugins/' + directory
 mix
 
     .js(source + '/resources/assets/js/currencies.js', dist + '/js')
-    .copy(dist + '/js/currencies.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/customer.js', dist + '/js')
-    .copy(dist + '/js/customer.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/avatar.js', dist + '/js')
-    .copy(dist + '/js/avatar.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/utilities.js', dist + '/js')
-    .copy(dist + '/js/utilities.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/room-availability.js', dist + '/js')
-    .copy(dist + '/js/room-availability.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/booking-reports.js', dist + '/js')
-    .copy(dist + '/js/booking-reports.js', source + '/public/js')
 
     .js(source + '/resources/assets/js/coupon.js', dist + '/js')
-    .copy(dist + '/js/coupon.js', source + '/public/js')
 
 const styles = [
     'hotel.scss',
@@ -41,7 +35,28 @@ styles.forEach(item => {
 });
 
 if (mix.inProduction()) {
-    styles.forEach(item => {
-        mix.copy(dist + '/css/' + item.replace('.scss', '.css'), source + '/public/css');
+    mix.after(() => {
+        [
+            'currencies.js',
+            'customer.js',
+            'avatar.js',
+            'utilities.js',
+            'room-availability.js',
+            'booking-reports.js',
+            'coupon.js',
+        ].forEach(item => {
+            copyBuiltAsset(dist + '/js/' + item, source + '/public/js/' + item);
+        });
+
+        styles.forEach(item => {
+            const cssFile = item.replace('.scss', '.css');
+
+            copyBuiltAsset(dist + '/css/' + cssFile, source + '/public/css/' + cssFile);
+        });
     });
+}
+
+function copyBuiltAsset(from, to) {
+    fs.mkdirSync(path.dirname(to), { recursive: true });
+    fs.copyFileSync(from, to);
 }

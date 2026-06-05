@@ -1,4 +1,5 @@
 let mix = require('laravel-mix')
+const fs = require('fs')
 
 const path = require('path')
 let directory = path.basename(path.resolve(__dirname))
@@ -11,7 +12,13 @@ mix
     .js(source + '/resources/js/faq.js', dist + '/js')
 
 if (mix.inProduction()) {
-    mix
-        .copy(dist + '/css/faq.css', source + '/public/css')
-        .copy(dist + '/js/faq.js', source + '/public/js')
+    mix.after(() => {
+        copyBuiltAsset(dist + '/css/faq.css', source + '/public/css/faq.css')
+        copyBuiltAsset(dist + '/js/faq.js', source + '/public/js/faq.js')
+    })
+}
+
+function copyBuiltAsset(from, to) {
+    fs.mkdirSync(path.dirname(to), { recursive: true })
+    fs.copyFileSync(from, to)
 }

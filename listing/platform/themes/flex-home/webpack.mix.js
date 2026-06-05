@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 const purgeCssPackage = require('@fullhuman/postcss-purgecss');
 const purgeCss = purgeCssPackage.default || purgeCssPackage;
+const fs = require('fs');
 
 const path = require('path');
 let directory = path.basename(path.resolve(__dirname));
@@ -55,9 +56,18 @@ mix
     .js(source + '/assets/js/property.js', dist + '/js')
     .js(source + '/assets/js/review.js', dist + '/js')
 
-    .copy(dist + '/css/style.css', source + '/public/css')
-    .copy(dist + '/css/rtl-style.css', source + '/public/css')
-    .copy(dist + '/js/app.js', source + '/public/js')
-    .copy(dist + '/js/wishlist.js', source + '/public/js')
-    .copy(dist + '/js/property.js', source + '/public/js')
-    .copy(dist + '/js/review.js', source + '/public/js')
+if (mix.inProduction()) {
+    mix.after(() => {
+        copyBuiltAsset(dist + '/css/style.css', source + '/public/css/style.css');
+        copyBuiltAsset(dist + '/css/rtl-style.css', source + '/public/css/rtl-style.css');
+        copyBuiltAsset(dist + '/js/app.js', source + '/public/js/app.js');
+        copyBuiltAsset(dist + '/js/wishlist.js', source + '/public/js/wishlist.js');
+        copyBuiltAsset(dist + '/js/property.js', source + '/public/js/property.js');
+        copyBuiltAsset(dist + '/js/review.js', source + '/public/js/review.js');
+    });
+}
+
+function copyBuiltAsset(from, to) {
+    fs.mkdirSync(path.dirname(to), { recursive: true });
+    fs.copyFileSync(from, to);
+}
