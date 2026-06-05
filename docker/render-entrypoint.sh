@@ -9,7 +9,7 @@ BASE_APP_URL="${BASE_APP_URL%/}"
 sed -ri "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
 sed -ri "s/<VirtualHost \*:[0-9]+>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-available/000-default.conf
 
-mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+mkdir -p storage/app/public storage/app/purifier storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
 mkdir -p storage/app/public/general
 mkdir -p source-code/storage/app/public source-code/storage/framework/cache/data source-code/storage/framework/sessions source-code/storage/framework/testing source-code/storage/framework/views source-code/storage/logs source-code/bootstrap/cache
 mkdir -p source-code/resources/lang source-code/public/file source-code/public/zaifiles

@@ -46,7 +46,7 @@ COPY --from=assets /app/listing/public/themes/homzen ./public/themes/homzen
 COPY --from=assets /app/listing/platform/themes/homzen/public ./platform/themes/homzen/public
 COPY docker/render-entrypoint.sh /usr/local/bin/render-entrypoint.sh
 
-RUN mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
+RUN mkdir -p storage/app/public storage/app/purifier storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
     && rm -f bootstrap/cache/*.php \
     && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader \
     && mkdir -p source-code/storage/app/public source-code/storage/framework/cache/data source-code/storage/framework/sessions source-code/storage/framework/testing source-code/storage/framework/views source-code/storage/logs source-code/bootstrap/cache \
