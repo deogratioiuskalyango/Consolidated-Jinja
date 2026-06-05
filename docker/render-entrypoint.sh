@@ -10,10 +10,23 @@ sed -ri "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
 sed -ri "s/<VirtualHost \*:[0-9]+>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-available/000-default.conf
 
 mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+mkdir -p storage/app/public/general
 mkdir -p source-code/storage/app/public source-code/storage/framework/cache/data source-code/storage/framework/sessions source-code/storage/framework/testing source-code/storage/framework/views source-code/storage/logs source-code/bootstrap/cache
 mkdir -p source-code/resources/lang source-code/public/file source-code/public/zaifiles
 chown -R www-data:www-data storage bootstrap/cache
 chown -R www-data:www-data source-code/storage source-code/bootstrap/cache source-code/resources/lang source-code/public/file source-code/public/zaifiles management
+
+if [ -f public/vendor/core/core/base/images/logo.png ]; then
+    cp -n public/vendor/core/core/base/images/logo.png storage/app/public/general/logo.png || true
+    cp -n public/vendor/core/core/base/images/logo.png storage/app/public/general/logo-light.png || true
+    cp -n public/vendor/core/core/base/images/logo.png storage/app/public/general/logo-150x150.png || true
+fi
+
+if [ -f public/vendor/core/core/base/images/favicon.png ]; then
+    cp -n public/vendor/core/core/base/images/favicon.png storage/app/public/general/favicon-150x150.png || true
+fi
+
+chown -R www-data:www-data storage/app/public/general
 
 if [ "${MANAGEMENT_MARK_INSTALLED:-true}" = "true" ] && [ ! -f source-code/storage/installed ]; then
     printf '{"d":"%s","i":"%s","u":"%s"}' \

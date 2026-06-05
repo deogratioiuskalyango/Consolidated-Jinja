@@ -4,7 +4,6 @@
         'jquery-waypoints',
         'stickytableheaders',
         'toastr',
-        'core',
         'cookie',
         'select2',
         'datepicker',
