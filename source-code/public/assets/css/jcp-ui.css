@@ -1,0 +1,285 @@
+/* =============================================
+   JCP UI Enhancements — jcp-ui.css
+   Loaded after theme.css; overrides are intentional.
+   ============================================= */
+
+/* ------------------------------------------------------------------
+   1. Stat / Feature cards
+   ------------------------------------------------------------------ */
+.dashboard-feature-item {
+    border-radius: 12px !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border-left: 3px solid var(--primary-color) !important;
+}
+
+.dashboard-feature-item:hover {
+    box-shadow: var(--t-shadow-md);
+    transform: translateY(-2px);
+}
+
+.dashboard-feature-item-icon-wrap {
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 10px !important;
+    font-size: 22px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dashboard-feature-item h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 6px !important;
+}
+
+.dashboard-feature-item p {
+    font-size: 13px;
+    color: var(--t-text-secondary);
+    margin-top: 10px !important;
+    margin-bottom: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ------------------------------------------------------------------
+   2. Page content wrapper
+   ------------------------------------------------------------------ */
+.page-content-wrapper {
+    border-radius: 16px !important;
+}
+
+/* ------------------------------------------------------------------
+   3. Section cards (bg-off-white panels with tables / charts)
+   ------------------------------------------------------------------ */
+.dashboard-properties-table,
+.bg-off-white.theme-border.p-20.radius-4 {
+    border-radius: 12px !important;
+    transition: box-shadow 0.18s ease;
+}
+
+/* ------------------------------------------------------------------
+   4. Table improvements
+   ------------------------------------------------------------------ */
+.table thead th {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--t-text-secondary);
+    border-bottom: 2px solid var(--t-border);
+    padding: 10px 12px;
+    white-space: nowrap;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+    background-color: var(--t-bg-hover) !important;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    border-color: var(--t-border);
+}
+
+/* ------------------------------------------------------------------
+   5. Sidebar — active state & spacing
+   ------------------------------------------------------------------ */
+#sidebar-menu ul li a.active,
+#sidebar-menu ul li.mm-active > a {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+#sidebar-menu ul li a {
+    border-radius: 8px;
+    margin: 2px 8px;
+    padding-left: 12px !important;
+}
+
+/* ------------------------------------------------------------------
+   6. Topbar — glass effect enhancement
+   ------------------------------------------------------------------ */
+#page-topbar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ------------------------------------------------------------------
+   7. Notification dropdown items
+   ------------------------------------------------------------------ */
+.notification-item {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--t-border);
+    transition: background 0.15s ease;
+}
+
+.notification-item:hover {
+    background: var(--t-bg-hover);
+    text-decoration: none;
+}
+
+.notification-item h6 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.notification-item p {
+    font-size: 12px;
+    margin-bottom: 0;
+    color: var(--t-text-secondary);
+}
+
+/* ------------------------------------------------------------------
+   8. Buttons
+   ------------------------------------------------------------------ */
+.theme-btn {
+    border-radius: 8px !important;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: all 0.18s ease !important;
+}
+
+.theme-btn:hover {
+    filter: brightness(1.07);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(54,134,252,0.3);
+}
+
+/* ------------------------------------------------------------------
+   9. Form controls — crisper focus ring
+   ------------------------------------------------------------------ */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(54,134,252,0.12) !important;
+}
+
+/* ------------------------------------------------------------------
+   10. Page title section
+   ------------------------------------------------------------------ */
+.page-title-box {
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--t-border);
+}
+
+.page-title-box h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.page-title-box p {
+    font-size: 14px;
+    color: var(--t-text-secondary);
+    margin-top: 2px;
+}
+
+/* ------------------------------------------------------------------
+   11. Notice board table
+   ------------------------------------------------------------------ */
+.tenant-portal-notice-tbl td {
+    padding: 10px 4px;
+    border-color: var(--t-border);
+}
+
+.tenant-portal-notice-tbl h5 {
+    font-size: 13.5px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--t-text-primary);
+}
+
+/* ------------------------------------------------------------------
+   12. Dark mode — stat card left accent
+   ------------------------------------------------------------------ */
+body[data-bs-theme="dark"] .dashboard-feature-item {
+    border-left-color: var(--t-accent) !important;
+}
+
+body[data-bs-theme="dark"] .dashboard-feature-item-icon-wrap {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* ------------------------------------------------------------------
+   13. Mobile responsive tweaks
+   ------------------------------------------------------------------ */
+@media (max-width: 576px) {
+    .dashboard-feature-item h2 {
+        font-size: 22px;
+    }
+
+    .page-title-box h2 {
+        font-size: 18px;
+    }
+
+    .table thead th {
+        font-size: 11px;
+    }
+
+    .theme-btn {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
+
+/* ------------------------------------------------------------------
+   14. Smart alerts panel
+   ------------------------------------------------------------------ */
+#smart-alerts-panel .card {
+    border-radius: 12px !important;
+    border: 1px solid var(--t-border) !important;
+    box-shadow: var(--t-shadow-sm) !important;
+    background: var(--t-bg-card) !important;
+}
+
+#smart-alerts-panel .card-header {
+    background: var(--t-bg-card) !important;
+    border-bottom: 1px solid var(--t-border) !important;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+#smart-alerts-panel .card-body {
+    background: var(--t-bg-card) !important;
+}
+
+#smart-alerts-panel .border-bottom {
+    border-color: var(--t-border) !important;
+}
+
+/* ------------------------------------------------------------------
+   15. Breadcrumb
+   ------------------------------------------------------------------ */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    font-size: 13px;
+}
+
+.breadcrumb-item.active {
+    font-size: 13px;
+    color: var(--t-text-secondary);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--t-text-muted);
+}
+
+/* ------------------------------------------------------------------
+   16. Smooth scrollbar
+   ------------------------------------------------------------------ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--t-border-hover); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--t-text-muted); }

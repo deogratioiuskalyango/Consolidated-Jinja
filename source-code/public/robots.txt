@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Keep authenticated portals out of search indexes
+Disallow: /admin/
+Disallow: /owner/
+Disallow: /tenant/
+Disallow: /shareholder/
+Disallow: /maintainer/
+Disallow: /accountant/
+Disallow: /storage/files/
+
+# Common bot traps
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+Sitemap: https://jinjaconsolidated.com/kintu/sitemap.xml

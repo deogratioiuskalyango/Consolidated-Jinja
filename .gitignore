@@ -42,8 +42,27 @@ listing/public/themes
 listing/public/docs
 listing/public/mix-manifest.json
 
-# Duplicate/source archive folders in the XAMPP workspace
-source-code/
+# Include the management Laravel app source; keep its local runtime/deps ignored below.
+source-code/.git/
+source-code/.claude/
+source-code/.env
+source-code/.env.*
+!source-code/.env.example
+source-code/vendor/
+source-code/node_modules/
+source-code/storage/logs/
+source-code/storage/framework/cache/
+source-code/storage/framework/sessions/
+source-code/storage/framework/testing/
+source-code/storage/framework/views/
+source-code/storage/app/*
+!source-code/storage/app/.gitignore
+!source-code/storage/app/public/
+source-code/storage/app/public/*
+!source-code/storage/app/public/.gitignore
+source-code/bootstrap/cache/*.php
+
+# Duplicate documentation/archive folders in the XAMPP workspace
 documentation/
 
 # Logs and OS/editor files
