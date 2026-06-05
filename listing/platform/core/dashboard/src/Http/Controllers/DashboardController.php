@@ -8,6 +8,7 @@ use Botble\Dashboard\Events\RenderingDashboardWidgets;
 use Botble\Dashboard\Models\DashboardWidget;
 use Botble\Dashboard\Models\DashboardWidgetSetting;
 use Exception;
+use Throwable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,18 @@ class DashboardController extends BaseController
             ->pluck('view')
             ->all();
 
-        return view('core/dashboard::list', compact('widgets', 'userWidgets', 'statWidgets'));
+        try {
+            return response(view('core/dashboard::list', compact('widgets', 'userWidgets', 'statWidgets'))->render());
+        } catch (Throwable $exception) {
+            logger()->error('Dashboard render failed', [
+                'exception' => $exception::class,
+                'message' => $exception->getMessage(),
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(),
+            ]);
+
+            throw $exception;
+        }
     }
 
     public function postEditWidgetSettingItem(Request $request)
