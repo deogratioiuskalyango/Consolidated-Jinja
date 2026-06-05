@@ -13,7 +13,6 @@ chown -R www-data:www-data storage bootstrap/cache
 php artisan storage:link || true
 php artisan cms:publish:assets || true
 php artisan config:cache
-php artisan route:cache
 php artisan view:cache
 
 if [ "${RUN_MIGRATIONS:-false}" = "true" ]; then
