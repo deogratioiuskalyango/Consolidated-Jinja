@@ -10,7 +10,7 @@ return [
 
     'events' => [
         'beforeRenderTheme' => function (Theme $theme): void {
-            $version = get_cms_version() . '.9';
+            $version = get_cms_version() . '.10';
 
             $boostrapCss = BaseHelper::isRtlEnabled() ? 'bootstrap.rtl.min.css' : 'bootstrap.min.css';
 
@@ -26,6 +26,7 @@ return [
             $theme->asset()->container('footer')->usePath()->add('wow', 'js/wow.min.js');
             $theme->asset()->container('footer')->usePath()->add('swiper', 'plugins/swiper/swiper-bundle.min.js');
             $theme->asset()->container('footer')->usePath()->add('script', 'js/script.js', version: $version);
+            $theme->asset()->container('footer')->usePath()->add('platform-ui', 'js/platform-ui.js', ['script'], version: $version);
 
             if (is_plugin_active('social-login')) {
                 $theme->asset()

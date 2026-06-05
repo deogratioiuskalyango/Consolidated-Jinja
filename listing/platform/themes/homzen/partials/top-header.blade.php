@@ -20,6 +20,10 @@
                 <x-core::icon name="ti ti-brand-whatsapp" />
                 <span>{{ __('WhatsApp') }}</span>
             </a>
+            <a class="jcp-topbar__item" href="{{ url('/management/login') }}">
+                <x-core::icon name="ti ti-building-community" />
+                <span>{{ __('Management') }}</span>
+            </a>
             @if (is_plugin_active('real-estate') && RealEstateHelper::isLoginEnabled())
                 @auth('account')
                     <a class="jcp-topbar__item" href="{{ route('public.account.dashboard') }}">

@@ -25,8 +25,15 @@
                     </div>
                     <div class="header-account">
                         <div class="flat-bt-top platform-header-actions">
+                            <a class="platform-header-link platform-header-link--management" href="{{ url('/management/login') }}">
+                                <x-core::icon name="ti ti-building-community" />
+                                <span>{{ __('Management') }}</span>
+                            </a>
                             @if (is_plugin_active('marketplace'))
-                                <a class="platform-header-link" href="{{ route('marketplace.vendor.become-vendor') }}">{{ __('Sell Hardware') }}</a>
+                                <a class="platform-header-link" href="{{ route('marketplace.vendor.become-vendor') }}">
+                                    <x-core::icon name="ti ti-tools" />
+                                    <span>{{ __('Sell Hardware') }}</span>
+                                </a>
                             @endif
                             @if (is_plugin_active('real-estate'))
                                 <a class="tf-btn primary" href="{{ route('public.account.properties.index') }}">
@@ -58,6 +65,16 @@
             <div class="bottom-canvas">
                 @if (is_plugin_active('real-estate') && RealEstateHelper::isLoginEnabled())
                     <div class="mobile-add-listing-wrapper">
+                        <a href="{{ url('/management/login') }}" class="mobile-add-listing-btn">
+                            <div class="add-listing-icon-wrapper">
+                                <x-core::icon name="ti ti-building-community" />
+                            </div>
+                            <div class="add-listing-text-wrapper">
+                                <span class="add-listing-title">{{ __('Management') }}</span>
+                                <span class="add-listing-subtitle">{{ __('Open the management system') }}</span>
+                            </div>
+                            <x-core::icon name="ti ti-arrow-right" class="add-listing-arrow" />
+                        </a>
                         <a href="{{ route('public.account.properties.index') }}" class="mobile-add-listing-btn">
                             <div class="add-listing-icon-wrapper">
                                 <x-core::icon name="ti ti-plus" />

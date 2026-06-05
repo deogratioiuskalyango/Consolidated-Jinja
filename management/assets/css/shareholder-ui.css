@@ -1,0 +1,600 @@
+/* ============================================================
+   Shareholder Portal — Enhanced UI
+   Responsive design for all screen sizes
+   ============================================================ */
+
+/* ── Vote option cards ───────────────────────────────────── */
+.vote-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--bs-body-bg, #fff);
+    user-select: none;
+    gap: .5rem;
+    min-height: 110px;
+    position: relative;
+}
+.vote-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.vote-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.vote-option .vote-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+.vote-option .vote-label {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .3px;
+}
+.vote-option .vote-desc {
+    font-size: .75rem;
+    color: #6b7280;
+    text-align: center;
+}
+/* For */
+.vote-option.vote-for:hover,
+.vote-option.vote-for.selected {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    box-shadow: 0 0 0 3px rgba(22,163,74,0.15);
+}
+.vote-option.vote-for.selected .vote-icon,
+.vote-option.vote-for.selected .vote-label { color: #16a34a; }
+/* Against */
+.vote-option.vote-against:hover,
+.vote-option.vote-against.selected {
+    border-color: #dc2626;
+    background: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.15);
+}
+.vote-option.vote-against.selected .vote-icon,
+.vote-option.vote-against.selected .vote-label { color: #dc2626; }
+/* Abstain */
+.vote-option.vote-abstain:hover,
+.vote-option.vote-abstain.selected {
+    border-color: #6b7280;
+    background: #f9fafb;
+    box-shadow: 0 0 0 3px rgba(107,114,128,0.15);
+}
+.vote-option.vote-abstain.selected .vote-icon,
+.vote-option.vote-abstain.selected .vote-label { color: #6b7280; }
+
+/* ── Vote check mark overlay ─────────────────────────────── */
+.vote-option .vote-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: #fff;
+}
+.vote-option.vote-for .vote-check    { background: #16a34a; }
+.vote-option.vote-against .vote-check { background: #dc2626; }
+.vote-option.vote-abstain .vote-check { background: #6b7280; }
+.vote-option.selected .vote-check { display: flex; }
+
+/* ── Countdown timer ─────────────────────────────────────── */
+.voting-countdown {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 52px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+.countdown-unit .cdown-val {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.countdown-unit .cdown-lbl {
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* ── Resolution status badge ring ────────────────────────── */
+.resolution-status-ring {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .85rem;
+}
+.status-ring-open    { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+.status-ring-closed  { background: #e0f2fe; color: #0369a1; border: 1.5px solid #7dd3fc; }
+.status-ring-passed  { background: #ede9fe; color: #6d28d9; border: 1.5px solid #c4b5fd; }
+.status-ring-failed  { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+.status-ring-draft   { background: #f3f4f6; color: #374151; border: 1.5px solid #d1d5db; }
+
+/* ── Results chart bars ──────────────────────────────────── */
+.result-bar-row { margin-bottom: 1.1rem; }
+.result-bar-row:last-child { margin-bottom: 0; }
+.result-bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: .875rem;
+}
+.progress-thick { height: 14px; border-radius: 999px; background: #e5e7eb; }
+.progress-thick .progress-bar { border-radius: 999px; transition: width .8s ease; }
+
+/* ── My vote confirmation card ───────────────────────────── */
+.my-vote-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.my-vote-pill.pill-for     { background: #dcfce7; color: #15803d; }
+.my-vote-pill.pill-against { background: #fee2e2; color: #b91c1c; }
+.my-vote-pill.pill-abstain { background: #f3f4f6; color: #374151; }
+
+/* ── Stat cards grid — CSS Grid so it works regardless of nesting ── */
+.sh-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+@media (min-width: 992px) {
+    .sh-stat-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+}
+
+.sh-stat-card {
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    background: var(--bs-body-bg, #fff);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.sh-stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #fff;               /* always white icon on coloured bg */
+    flex-shrink: 0;
+}
+.sh-stat-body { display: flex; flex-direction: column; gap: 3px; }
+.sh-stat-label {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--bs-secondary-color, #6b7280);
+    line-height: 1.3;
+}
+.sh-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--bs-body-color, #111827);
+    word-break: break-word;
+}
+.sh-stat-unit { font-size: .95rem; font-weight: 600; }
+.sh-stat-sub  { font-size: .67rem; color: var(--bs-secondary-color, #9ca3af); line-height: 1.3; }
+
+/* Dark mode */
+[data-bs-theme="dark"] .sh-stat-card  { background: #1f2937; border-color: #374151; }
+[data-bs-theme="dark"] .sh-stat-value { color: #f9fafb; }
+[data-bs-theme="dark"] .sh-stat-label,
+[data-bs-theme="dark"] .sh-stat-sub   { color: #9ca3af; }
+
+/* Tiny phones */
+@media (max-width: 360px) {
+    .sh-stat-value { font-size: 1.2rem; }
+    .sh-stat-card  { padding: .75rem; gap: .5rem; }
+}
+
+/* ── Governance rights permission chips ──────────────────── */
+.sh-perm-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1.5px solid;
+    height: 100%;
+    min-height: 52px;
+}
+.sh-perm-granted { border-color: #d1fae5; background: #f0fdf4; }
+.sh-perm-denied  { border-color: #e5e7eb; background: var(--bs-body-bg, #fff); }
+.sh-perm-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1; }
+.sh-perm-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.sh-perm-name {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sh-perm-status { font-size: .67rem; line-height: 1.2; }
+
+@media (max-width: 575px) {
+    .sh-perm-chip  { padding: 6px 8px; gap: 6px; }
+    .sh-perm-icon  { font-size: 1rem; }
+    .sh-perm-name  { font-size: .7rem; }
+    .sh-perm-status{ font-size: .62rem; }
+}
+
+[data-bs-theme="dark"] .sh-perm-granted { border-color: #166534; background: #052e16; }
+[data-bs-theme="dark"] .sh-perm-denied  { border-color: #374151; background: #1f2937; }
+[data-bs-theme="dark"] .sh-perm-name    { color: #f3f4f6; }
+
+/* ── Resolution list cards (mobile) ─────────────────────── */
+.resolution-card {
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    padding: 1rem 1.25rem;
+    background: var(--bs-body-bg, #fff);
+    transition: box-shadow .2s;
+}
+.resolution-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+/* ── Responsive table → card switch ─────────────────────── */
+@media (max-width: 767px) {
+    .res-table-wrap { display: none; }
+    .res-cards-wrap { display: block; }
+
+    .vote-option {
+        min-height: 90px;
+        padding: 1rem .75rem;
+    }
+    .vote-option .vote-icon { font-size: 1.6rem; }
+
+    .page-content-wrapper { padding: 15px !important; }
+}
+@media (min-width: 768px) {
+    .res-table-wrap { display: block; }
+    .res-cards-wrap { display: none; }
+}
+
+/* ── Large-screen enhancements ───────────────────────────── */
+@media (min-width: 1400px) {
+    .sh-stat-card  { padding: 1.25rem 1.5rem 1.4rem; }
+    .sh-stat-icon  { width: 48px; height: 48px; font-size: 1.4rem; border-radius: 12px; }
+    .sh-stat-value { font-size: 1.75rem; }
+    .sh-stat-label { font-size: .78rem; }
+}
+
+/* ── Dark mode ───────────────────────────────────────────── */
+[data-bs-theme="dark"] .vote-option {
+    border-color: #374151;
+    background: #1f2937;
+}
+[data-bs-theme="dark"] .vote-option.vote-for.selected    { background: #14532d; }
+[data-bs-theme="dark"] .vote-option.vote-against.selected { background: #7f1d1d; }
+[data-bs-theme="dark"] .vote-option.vote-abstain.selected { background: #1f2937; }
+[data-bs-theme="dark"] .countdown-unit { background: #374151; }
+[data-bs-theme="dark"] .countdown-unit .cdown-lbl { color: #9ca3af; }
+[data-bs-theme="dark"] .status-ring-open    { background: #14532d; color: #4ade80; border-color: #166534; }
+[data-bs-theme="dark"] .status-ring-closed  { background: #0c4a6e; color: #7dd3fc; border-color: #075985; }
+[data-bs-theme="dark"] .status-ring-passed  { background: #4c1d95; color: #c4b5fd; border-color: #5b21b6; }
+[data-bs-theme="dark"] .status-ring-failed  { background: #7f1d1d; color: #fca5a5; border-color: #991b1b; }
+[data-bs-theme="dark"] .status-ring-draft   { background: #374151; color: #d1d5db; border-color: #4b5563; }
+[data-bs-theme="dark"] .resolution-card     { border-color: #374151; background: #1f2937; }
+[data-bs-theme="dark"] .progress-thick      { background: #374151; }
+[data-bs-theme="dark"] .my-vote-pill.pill-for     { background: #14532d; color: #4ade80; }
+[data-bs-theme="dark"] .my-vote-pill.pill-against { background: #7f1d1d; color: #f87171; }
+[data-bs-theme="dark"] .my-vote-pill.pill-abstain { background: #374151; color: #d1d5db; }
+
+/* ── Voting not available states ─────────────────────────── */
+.vote-unavailable-box {
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    background: #f9fafb;
+    border: 2px dashed #e5e7eb;
+}
+[data-bs-theme="dark"] .vote-unavailable-box {
+    background: #1f2937;
+    border-color: #374151;
+}
+.vote-unavailable-box .unavailable-icon {
+    font-size: 2.5rem;
+    margin-bottom: .75rem;
+}
+
+/* ── Decision buttons (financial approvals) ──────────────── */
+.decision-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .2s;
+    width: 100%;
+    background: none;
+}
+.decision-btn.btn-approve {
+    border-color: #16a34a;
+    color: #15803d;
+}
+.decision-btn.btn-approve:hover,
+.decision-btn.btn-approve.selected {
+    background: #16a34a;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(22,163,74,.3);
+}
+.decision-btn.btn-reject {
+    border-color: #dc2626;
+    color: #b91c1c;
+}
+.decision-btn.btn-reject:hover,
+.decision-btn.btn-reject.selected {
+    background: #dc2626;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(220,38,38,.3);
+}
+
+/* ============================================================
+   MOBILE — Sidebar overlay backdrop
+   ============================================================ */
+.sh-sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 998; /* just below sidebar z-index 999 */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+@media (max-width: 991px) {
+    body.sidebar-enable .sh-sidebar-overlay {
+        display: block;
+    }
+}
+
+/* ============================================================
+   HEADER — Mobile compact topbar
+   ============================================================ */
+@media (max-width: 991px) {
+    .navbar-header {
+        height: 60px !important;
+        padding: 0 8px 0 0 !important;
+    }
+    .navbar-brand-box {
+        width: auto !important;
+        padding: 0 10px !important;
+    }
+    /* Keep logo small on mobile */
+    .navbar-brand-box .logo-lg { display: none !important; }
+    .navbar-brand-box .logo-sm { display: inline-block !important; }
+    .navbar-brand-box img { max-height: 36px; width: auto; }
+
+    /* Tighten header icons */
+    .header-item.noti-icon,
+    .header-item { padding: 0 8px !important; }
+
+    /* Hide username text in user dropdown on mobile */
+    .user-dropdown .d-none.d-xl-inline-block { display: none !important; }
+    .user-dropdown .mdi-chevron-down { display: none !important; }
+
+    /* Notification dropdown — full-width on mobile */
+    .sh-notif-menu {
+        position: fixed !important;
+        left: 8px !important;
+        right: 8px !important;
+        top: 64px !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        width: auto !important;
+    }
+
+    /* Push all page content down to account for 60px topbar */
+    .main-content { margin-top: 60px !important; }
+    #page-topbar { height: 60px !important; }
+}
+
+/* ============================================================
+   HEADER — Larger screens polish
+   ============================================================ */
+@media (min-width: 992px) {
+    .navbar-header { padding-right: 24px !important; }
+    .navbar-brand-box img { max-height: 44px; width: auto; }
+}
+
+/* ============================================================
+   SIDEBAR — Mobile slide-in improvements
+   ============================================================ */
+@media (max-width: 991px) {
+    .vertical-menu {
+        position: fixed !important;
+        top: 60px !important;
+        left: 0;
+        bottom: 0;
+        width: 260px !important;
+        z-index: 999 !important;
+        transform: translateX(-100%);
+        transition: transform .25s cubic-bezier(.4,0,.2,1);
+        box-shadow: none;
+        overflow-y: auto;
+    }
+    body.sidebar-enable .vertical-menu {
+        transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(0,0,0,.18);
+    }
+    /* Extra bottom padding so last menu item isn't hidden behind bottom nav */
+    .vertical-menu #sidebar-menu { padding-bottom: 80px; }
+}
+
+/* ============================================================
+   BOTTOM NAVIGATION BAR — mobile only
+   ============================================================ */
+.sh-bottom-nav {
+    display: none !important;
+}
+@media (max-width: 991px) {
+    .sh-bottom-nav {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: var(--bs-body-bg, #fff);
+        border-top: 1px solid #e5e7eb;
+        z-index: 997;
+        align-items: stretch;
+        box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+    }
+    .sh-bottom-nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        text-decoration: none;
+        color: #6b7280;
+        font-size: .6rem;
+        font-weight: 600;
+        letter-spacing: .3px;
+        transition: color .15s;
+        position: relative;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .sh-bottom-nav-item i {
+        font-size: 1.35rem;
+        line-height: 1;
+    }
+    .sh-bottom-nav-item.active,
+    .sh-bottom-nav-item:hover {
+        color: var(--primary-color, #3686FC);
+    }
+    .sh-bottom-nav-item.active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 20%;
+        right: 20%;
+        height: 3px;
+        border-radius: 0 0 4px 4px;
+        background: var(--primary-color, #3686FC);
+    }
+    .sh-bottom-nav-badge {
+        position: absolute;
+        top: 6px;
+        right: calc(50% - 22px);
+        background: #dc2626;
+        color: #fff;
+        font-size: .52rem;
+        font-weight: 700;
+        min-width: 16px;
+        height: 16px;
+        border-radius: 99px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        line-height: 1;
+    }
+    /* The menu icon item opens/closes the sidebar */
+    .sh-bottom-nav-menu { cursor: pointer; border: none; background: none; }
+
+    /* Push page content above the bottom nav */
+    .main-content { padding-bottom: 68px !important; }
+}
+
+
+/* Dashboard tables → horizontal scroll on mobile */
+@media (max-width: 767px) {
+    .card .table-responsive { -webkit-overflow-scrolling: touch; }
+
+    /* Stack the revenue+dividend charts */
+    .sh-chart-col { margin-bottom: 1rem; }
+
+    /* Card headers — smaller on mobile */
+    .card-header h5 { font-size: .95rem !important; }
+
+    /* Laws tab pills — smaller and scrollable */
+    #lawsTabs { flex-wrap: nowrap !important; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+    #lawsTabs .nav-link { white-space: nowrap; font-size: .75rem; padding: 5px 9px; }
+
+    /* Rights grid — 2 cols on mobile */
+    #pane-rights .col-md-6.col-lg-3 { flex: 0 0 50%; max-width: 50%; }
+    #pane-obligations .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+    #pane-laws .col-md-6.col-lg-4 { flex: 0 0 100%; max-width: 100%; }
+
+    /* Governance rights quick-view chips — smaller text */
+    #pane-rights .border.rounded.p-3 .small,
+    .card-body .border.rounded.p-2 .small { font-size: .72rem !important; }
+
+    /* Vesting card numbers */
+    .border.rounded.p-2 .fw-bold.small { font-size: .85rem !important; }
+}
+
+/* Page-content-wrapper padding on mobile */
+@media (max-width: 575px) {
+    .page-content-wrapper { padding: 12px !important; border-radius: 12px !important; }
+}
+
+/* ============================================================
+   DARK MODE — bottom nav + overlay
+   ============================================================ */
+[data-bs-theme="dark"] .sh-bottom-nav {
+    background: #1f2937;
+    border-top-color: #374151;
+}
+[data-bs-theme="dark"] .sh-bottom-nav-item { color: #9ca3af; }
+[data-bs-theme="dark"] .sh-bottom-nav-item.active,
+[data-bs-theme="dark"] .sh-bottom-nav-item:hover { color: #60a5fa; }
+[data-bs-theme="dark"] .sh-bottom-nav-item.active::before { background: #60a5fa; }
+
+/* ============================================================
+   GENERAL TOUCH-FRIENDLY — larger tap targets on mobile
+   ============================================================ */
+@media (max-width: 991px) {
+    #sidebar-menu ul li a {
+        padding: 13px 20px !important;
+        font-size: .95rem !important;
+    }
+    #sidebar-menu ul li a i {
+        font-size: 1.15rem !important;
+        margin-right: 10px !important;
+    }
+}
