@@ -60,6 +60,8 @@ source-code/storage/app/*
 !source-code/storage/app/public/
 source-code/storage/app/public/*
 !source-code/storage/app/public/.gitignore
+!source-code/storage/app/public/files/
+!source-code/storage/app/public/files/**
 source-code/bootstrap/cache/*.php
 
 # Duplicate documentation/archive folders in the XAMPP workspace
