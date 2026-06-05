@@ -11,8 +11,9 @@ sed -ri "s/<VirtualHost \*:[0-9]+>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-
 
 mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
 mkdir -p source-code/storage/app/public source-code/storage/framework/cache/data source-code/storage/framework/sessions source-code/storage/framework/testing source-code/storage/framework/views source-code/storage/logs source-code/bootstrap/cache
+mkdir -p source-code/resources/lang source-code/public/file source-code/public/zaifiles
 chown -R www-data:www-data storage bootstrap/cache
-chown -R www-data:www-data source-code/storage source-code/bootstrap/cache management
+chown -R www-data:www-data source-code/storage source-code/bootstrap/cache source-code/resources/lang source-code/public/file source-code/public/zaifiles management
 
 if [ "${MANAGEMENT_MARK_INSTALLED:-true}" = "true" ] && [ ! -f source-code/storage/installed ]; then
     printf '{"d":"%s","i":"%s","u":"%s"}' \
