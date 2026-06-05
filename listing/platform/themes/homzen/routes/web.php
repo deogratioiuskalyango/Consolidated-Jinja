@@ -2,8 +2,10 @@
 
 use Botble\Base\Http\Middleware\RequiresJsonRequestMiddleware;
 use Botble\Base\Facades\BaseHelper;
-use Botble\Theme\Facades\Theme;
+use Botble\RealEstate\Http\Controllers\Fronts\ForgotPasswordController;
 use Botble\RealEstate\Http\Controllers\Fronts\RegisterController;
+use Botble\RealEstate\Http\Controllers\Fronts\ResetPasswordController;
+use Botble\Theme\Facades\Theme;
 use Illuminate\Support\Facades\Route;
 use Theme\Homzen\Http\Controllers\HomzenController;
 
@@ -23,6 +25,10 @@ Route::middleware(['web', 'core'])
                 Route::post('account-login', 'postUnifiedLogin')->name('login.post');
                 Route::get('account-register', [RegisterController::class, 'showRegistrationForm'])->name('register');
                 Route::post('account-register', [RegisterController::class, 'register'])->name('register.post');
+                Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+                Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+                Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+                Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
             });
 
             Route::prefix('ajax')->name('public.ajax.')->middleware(RequiresJsonRequestMiddleware::class)->group(function (): void {
